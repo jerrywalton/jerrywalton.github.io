@@ -9,67 +9,21 @@
     summary::-webkit-details-marker {
       display: none;
     }
+    summary::after {
+      content: '➕';
+      float: right;
+      transition: transform 0.3s;
+    }
+    details[open] summary::after {
+      content: '➖';
+    }
+    mark {
+      background-color: #fde68a;
+      padding: 0 2px;
+      border-radius: 4px;
+    }
   </style>
 </head>
-<body class="bg-gray-100 font-sans p-6">
-  <div class="max-w-3xl mx-auto">
-    <h1 class="text-3xl font-bold mb-6 text-center text-blue-800">NAICS & LinkedIn Industry Code Search</h1>
-    
-    <!-- Search Input -->
-    <div class="mb-6">
-      <input
-        type="text"
-        id="searchInput"
-        placeholder="Search by keyword, NAICS code, or LinkedIn industry..."
-        class="w-full p-3 border border-gray-300 rounded-lg shadow-sm"
-        oninput="filterIndustries()"
-      />
-    </div>
-
-    <!-- Industry Sections -->
-    <div id="industrySections" class="space-y-4">
-
-      <!-- Example Section -->
-      <details class="bg-white p-4 rounded-lg shadow">
-        <summary class="cursor-pointer text-lg font-semibold text-blue-700">11 - Agriculture, Forestry, Fishing and Hunting</summary>
-        <ul class="ml-6 mt-2 list-disc text-gray-700">
-          <li>111 - Crop Production → LinkedIn: 3 (Farming)</li>
-          <li>112 - Animal Production → LinkedIn: 3 (Farming)</li>
-          <li>113 - Forestry and Logging → LinkedIn: 7 (Environmental Services)</li>
-          <li>114 - Fishing, Hunting and Trapping → LinkedIn: 7 (Environmental Services)</li>
-          <li>115 - Support Activities for Agriculture and Forestry → LinkedIn: 3 (Farming)</li>
-        </ul>
-      </details>
-
-      <details class="bg-white p-4 rounded-lg shadow">
-        <summary class="cursor-pointer text-lg font-semibold text-blue-700">21 - Mining, Quarrying, and Oil and Gas Extraction</summary>
-        <ul class="ml-6 mt-2 list-disc text-gray-700">
-          <li>211 - Oil and Gas Extraction → LinkedIn: 53 (Oil & Energy)</li>
-          <li>212 - Mining (except Oil and Gas) → LinkedIn: 51 (Mining & Metals)</li>
-          <li>213 - Support Activities for Mining → LinkedIn: 51 (Mining & Metals)</li>
-        </ul>
-      </details>
-
-      <details class="bg-white p-4 rounded-lg shadow">
-        <summary class="cursor-pointer text-lg font-semibold text-blue-700">22 - Utilities</summary>
-        <ul class="ml-6 mt-2 list-disc text-gray-700">
-          <li>221 - Utilities → LinkedIn: 50 (Utilities)</li>
-        </ul>
-      </details>
-
-    </div>
-  </div>
-
-  <script>
-    function filterIndustries() {
-      const input = document.getElementById("searchInput").value.toLowerCase();
-      const sections = document.getElementById("industrySections").children;
-
-      Array.from(sections).forEach(section => {
-        const text = section.textContent.toLowerCase();
-        section.style.display = text.includes(input) ? "block" : "none";
-      });
-    }
-  </script>
-</body>
-</html>
+<body class="bg-gradient-to-br from-indigo-50 via-white to-indigo-100 min-h-screen p-6">
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-4xl
